@@ -140,6 +140,97 @@ card: {
 
 /*
  Atividade de Fixação
- 1= 
-
+ 1= Atividade 1: Análise Técnica (Individual): Se trocar value={titulo} por value="Texto Fixo", o campo fica travado e o usuário não consegue digitar. Resumindo, o campo não aceita digitação porque está sendo controlado por um valor fixo, e não por um estado que possa ser atualizado.
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Atividade 2: Desafio Prático "Calculadora de Gorjetas"
+ Objetivo: Desenvolver autonomia na manipulação de estados numéricos.
  */
+
+ import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+
+export default function CalculadoraGorjeta() {
+  // Estado para armazenar o valor da conta (string)
+  const [valorConta, setValorConta] = useState('');
+
+  // Converter para número
+  const valorNumerico = parseFloat(valorConta) || 0;
+
+  // Calcular 10%
+  const gorjeta = valorNumerico * 0.1;
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Calculadora de Gorjeta</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Digite o valor da conta"
+        keyboardType="numeric"
+        value={valorConta}
+        onChangeText={setValorConta}
+      />
+
+      <Text style={styles.resultado}>
+        Gorjeta (10%): R$ {gorjeta.toFixed(2)}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  titulo: {
+    fontSize: 22,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 20,
+  },
+  resultado: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+});
+
+// Atividade 3: Pensamento Analítico e UX
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+
+export default function App() {
+  const [email, setEmail] = useState('');
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu e-mail"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none" // 🔥 resolve o problema
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 20,
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+  },
+});
