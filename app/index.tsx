@@ -1,6 +1,9 @@
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>A criadora do Minecraft</Text>
@@ -9,7 +12,7 @@ export default function Index() {
       
       <TouchableOpacity
         style={styles.button}
-        onPress={() => console.log("Botão Login pressionado!")}
+        onPress={() => router.push("/entrar")}
       >
         <Text style={styles.buttonText}>ENTRAR</Text>
       </TouchableOpacity>
